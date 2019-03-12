@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue2.js"></script>
+    <script src="vue2-router.js"></script>
+</head>
+<body>
+<!--定义模板-->
+<div id="app">
+    <router-link to="/login">登陆</router-link>
+    <router-link to="/register/xiaoMing">注册</router-link>
+    <!--占位符-->
+    <router-view></router-view>
+</div>
+
+</body>
+<script>
+//    定义根组件
+    var App = Vue.extend()
+//    定义登陆组件
+    var login = Vue.extend({
+        template: '<h2>登陆</h2>'
+    })
+//    定义注册组件
+    var register = Vue.extend({
+        template: '<h2>注册:{{oname}}</h2>',
+        data: function(){
+            return{
+                oname : ''
+            }
+        },
+        created:function(){
+                this.oname = this.$route.params.uname
+                }
+    })
+//    定义路由并且注册路由规则
+    var vueRouter  = new VueRouter({
+        routes :[
+            {path:'/',redirect:'/login'},
+            {path:'/login',component:login},
+            {path:'/register/:uname',component:register}
+        ]
+    })
+//    使用路由
+    new Vue({
+        el:'#app',
+        router: vueRouter
+    })
+</script>
+</html>

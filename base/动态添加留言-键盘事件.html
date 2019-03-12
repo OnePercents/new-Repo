@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>动态添加留言</title>
+<style>
+
+</style>
+<script>
+window.onload = function(){
+	var oText = document.getElementById('text');
+	var oUl = document.getElementsByTagName('ul')[0];
+	oText.focus();
+	oText.onkeyup = function(ev){
+		var ev = ev||event;
+		if(ev.keyCode == 13){
+			if(this.value != ''){
+				var oLi = document.createElement('li');		
+				oLi.innerHTML = this.value;
+				if(oUl.children[0]){
+					oUl.insertBefore(oLi , oUl.children[0]);
+				}else{
+					oUl.appendChild(oLi);
+				}
+				oText.value = '';
+			}else{
+				alert('请输入留言');
+			}
+			oText.focus();
+		}
+	}
+	
+}
+</script>
+
+</head>
+
+<body>
+<input type="text" id="text">
+<ul></ul>
+</body>
+</html>

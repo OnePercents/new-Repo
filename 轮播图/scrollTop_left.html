@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<style>
+#div{text-align:center; background:#999;}
+#pic{position:absolute; top:50px; height:100px; z-index:2;}
+</style>
+<script>
+var scrollT;
+var scrollL;
+var scrollObj;
+function getStyle(){
+	scrollObj = document.getElementById("pic");
+	
+	if(scrollT.currentStyle){
+		scrollT = parseInt(scrollObj.currentStyle.top);
+		scrollL = parseInt(scrollObj.currentStyle.left);
+	}else{
+		scrollT = parseInt(document.defaultView.getComputedStyle(scrollT,null).top);
+		scrollL = parseInt(document.defaultView.getComputedStyle(scrollL,null).left);	
+	}
+}
+
+function move(){
+	
+	scrollObj.style.top = scrollT + parseInt(document.documentElement.scrollTop) + 'px';
+	scrollObj.style.left = scrollL + parseInt(document.documentElement.scrollLeft) + 'px';
+}
+
+window.onload = getStyle;
+window.onscroll = move;
+
+</script>
+</head>
+
+<body>
+
+<div id="div"><img id="pic" src="banner/1bg.png" style="width:300px; height:300px;"></div>
+
+</body>
+</html>

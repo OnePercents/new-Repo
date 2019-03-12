@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+//        数组去重
+        var arr = ['张三','张三','aa','bb','张三','张三','bb','李四','李四','cc','cc'];
+
+        Array.prototype.unique = function(){
+
+            var arrObj = {};
+            var len = this.length;
+            var arr = [];
+            for( var i = 0 ; i < len ; i++ ){
+                if( !arrObj[this[i]] ){
+                    arrObj[this[i]] = 'abc';
+                    arr.push(this[i]);
+                }
+            }
+            return arr;
+        }
+
+        //类型判断
+
+        function type(target){
+            var ret = typeof (target);
+            var template = {
+                '[object Object]' : 'object - object',
+                '[object Array]' : 'object - Array',
+                '[object String]' : 'object - String',
+                '[object Boolean]' : 'object - Boolean',
+                '[object Number]' : 'object - Number'
+            }
+
+            if(target == null){
+                return 'null'
+            }else if(ret == 'object'){
+                var str = Object.prototype.toString.call(target);
+                return template[str];
+            }else{
+                return ret;
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

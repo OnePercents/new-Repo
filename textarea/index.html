@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .textarea{
+            width:400px;
+            height:100px;
+            resize: none;
+            font-size: 20px;
+        }
+        .content{
+            margin-top: 20px;
+        }
+
+        li{
+            list-style: none;
+            height:36px;
+            line-height: 36px;
+        }
+    </style>
+
+    <script>
+        var oUl = document.getElementsByClassName('content');
+        var oLi = document.getElementsByTagName('li');
+        var delBtn = document.getElementsByClassName('delBtn');
+
+        function getValue(obj){
+            var val = obj.value;
+            var btn = document.getElementsByClassName('show')[0];
+            btn.onclick = function(){
+                if(obj.value == ''){
+                    oUl[0].innerHTML += '';
+                }else{
+                    oUl[0].innerHTML += "<li>"+val+"<button class='delBtn'>删除</button></li>"
+                    obj.value = '';
+                }    
+            }
+        }
+        
+        for(var i = 0 ; i < delBtn.length ; i++){
+            (function(j){
+                delBtn[j].onclick = function(){
+                oLi[j].parentNode.removeChild(oLi[j]);
+                }
+            })(i)
+        }    
+        
+        
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <textarea class="textarea" onkeyup="getValue(this)" autofocus></textarea>
+        <br>
+        <button class="show">发表</button>
+        <ul class="content"></ul>
+    </div>
+</body>
+</html>

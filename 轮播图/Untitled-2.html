@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<style>
+#menu1{}
+#menu1>a{color:black ; font-size:18px; text-decoration:none; background:rgba(153,153,153,.8)}
+#menu2{display:none;}
+
+</style>
+
+
+<script>
+window.onload = function(){
+	
+	var oMenu1 = document.getElementById('menu1');
+	var oMenu2 = document.getElementById('menu2');
+	
+	oMenu1.onmouseover = show;
+	oMenu1.onmouseout = hide;
+	
+	oMenu2.onmouseover = show;
+	oMenu2.onmouseout = hide;
+	
+	var timer = null;
+	
+	function show(){
+		clearInterval(timer);
+		oMenu2.style.display = 'block';	
+	}
+	
+	function hide(){
+		setTimeout(function(){
+			oMenu2.style.display = 'none';
+		},300)
+			
+	}
+}
+</script>
+</head>
+
+<body>
+
+<div id="menu1">
+	<a href="#">1111111</a>
+    <a href="#">2222222</a>
+    <a href="#">3333333</a>
+    <a href="#">4444444</a>
+</div>
+<div id ='menu2'>
+	<a href="#">aaa</a> | 
+    <a href="#">bbb</a> |
+    <a href="#">aaa</a> | 
+    <a href="#">bbb</a> | 
+    <a href="#">ccc</a>
+</div>
+</body>
+</html>

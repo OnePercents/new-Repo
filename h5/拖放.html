@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖放</title>
+    <script type="text/javascript">
+        function start(ev){
+            ev.dataTransfer.setData('text',ev.target.id);
+        }
+        function allowDrop(ev){
+            ev.preventDefault();
+        }
+        function drop(ev){
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData('text');
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 200px; height:200px; border:1px solid black;"></div>
+<div id="div2" draggable="true" ondragstart="start(event)">hello</div>
+
+</body>
+</html>

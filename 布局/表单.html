@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <link rel="stylesheet" href="media-queries" type="text/css">
+    <style>
+        article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+            display:block;
+        }
+
+        #pagewrap{
+            width:980px;
+            margin:0 auto;
+        }
+
+        #header{
+            height: 160px;
+        }
+
+        #content{
+            width: 600px;
+            float:left;
+        }
+
+        #sidebar{
+            width:280px;
+            float: right;
+        }
+
+        #footer{
+            clear:both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="pagewrap">
+
+        <header id="header">
+            <hgroup>
+                <h1 id="site-logo">Demo</h1>
+                <h2 id="site-description">Site Description</h2>
+            </hgroup>
+
+            <nav>
+
+                <ul id="main-nav">
+                    <li><a href="javascript:;">Home</a></li>
+                    <li><a href="javascript:;">Theme</a></li>
+                    <li><a href="javascript:;">Sort</a></li>
+                    <li><a href="javascript:;">Design</a></li>
+                </ul>
+
+            </nav>
+
+            <form action="#" id="searchform">
+                <input type="search" placeholder="请输入...">
+            </form>
+        </header>
+
+        <div id="content">
+            <article class="post"> blog post </article>
+        </div>
+
+        <aside id="sidebar">
+            <section class="widget"> widget </section>
+        </aside>
+
+        <footer id="footer"> footer </footer>
+        
+
+    </div>
+
+</body>
+
+</html>

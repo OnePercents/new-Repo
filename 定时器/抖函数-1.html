@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+
+#img{position:absolute;top:100px;left:50px;}
+
+
+</style>
+<script src='定时.js'></script>
+
+<script>
+	window.onload = function(){
+		var oImg = document.getElementById('img');
+		oImg.onclick = function(){
+			dou(oImg , 'left' , function(){
+				dou(oImg , 'top');	
+			});
+		}
+	}
+</script>
+</head>
+
+<body>
+<img src="img/1.jpg" id="img"/>
+<body>
+</body>
+</html>

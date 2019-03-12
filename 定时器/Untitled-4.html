@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>广告</title>
+
+<style>
+*{margin:0;padding:0;}
+#content{width:400px;height:200px;border:1px dashed red;}
+</style>
+<script>
+function showTime(){
+	var sum = 0 ;
+	var con = document.getElementById('content');
+	
+	var myDate1 = new Date();
+	var timer1 = myDate1.toLocaleString();
+
+	
+	for( var i = 1 ; i <= 10000 ; i++){
+		sum+= i;
+	}
+	
+	
+	var myDate2 = new Date();
+	var timer2 = myDate2.toLocaleString();
+	con.innerHTML = 'myDate1时间为：'+myDate1+':'+myDate1.getMilliseconds()+"<br/>"+'myDate2时间为：'+myDate2+':'+myDate2.getMilliseconds()+'<br/>';
+	
+	var hTime = myDate2.getTime() - myDate1.getTime();
+	
+	con.innerHTML +=hTime + '<br/>' +myDate1.getTime() + '<br/>'+myDate2.getTime();
+		
+}
+window.onload = function(){
+	showTime();
+	setTimeout('window.close()',2000);	
+}
+</script>
+</head>
+
+<body>
+
+<div id='content'><div>
+
+</body>
+</html>

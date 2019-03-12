@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width='1000' height="600" style="background:black;"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+        var starList = [];
+        function init(){
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        init();
+        window.onresize = init;
+
+        canvas.addEventListener('click',function(event){
+            var e = event;
+            starList.push(new Star(e.clientX,e.clientY));
+        })
+
+        function Star(x,y){
+            this.x = x;
+            this.y = y;
+            this.vy = (Math.random()-0.5)*20;
+            this.a = 1;
+            this.va = 0.99;
+            this.color = randomColor();
+            this.draw();
+        }
+
+        function randomColor(){
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            return 'rgb('+r+','+g+','+b+')';
+        }
+
+        Star.prototype = {
+            draw:function(){
+                ctx.beginPath();
+                ctx.globalAlpha = this.a;
+                ctx.globalCompositeOperation = 'lighter';
+                ctx.arc(this.x,this.y,Math.random()*4,0,Math.PI*2,false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                this.update();
+            },
+            update:function(){
+                this.y += this.vy;
+                this.a *= this.va;
+            }
+        }
+
+        function render(){
+            starList.forEach(function(item,i){
+                item.draw();
+                if(item.a<0.1){
+                    starList.splice(i,1);
+                }
+            })
+            window.requestAnimationFrame(render);
+        }
+        render();
+
+        
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

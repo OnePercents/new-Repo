@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+    <template id="one">
+        <div>
+            <a @click="sendData">发送数据</a>
+        </div>
+    </template>
+
+    <div id="app">
+        <h3>{{name}}</h3>
+        <one @send="getData"></one>
+    </div>
+</body>
+
+<script>
+    Vue.component( 'one',{
+        template:'#one',
+        methods:{
+            sendData(){
+                this.$emit("send",123)
+            }
+        }
+    })
+    new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+            getData(input){
+                console.log(input);
+            }
+        }
+    })
+</script>
+</html>

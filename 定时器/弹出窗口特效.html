@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>@弹出窗口0</title>
+
+<script>
+function openWindow(){
+	window.status = '系统当前状态，正在打开注册页面...';//设置窗口状态栏的文本
+	if(window.screen.width == 1366 && window.screen.height == 768){
+		window.open('Untitled-4.html','_blank','width = 400px ,height = 200px,top=100px,left = 100px');
+	}else{
+		window.alert('屏幕分辨率不对，打开失败！！');	
+	}
+}
+
+function closeWindow(){
+	if(window.confirm('您确认退出么?')){
+		opener = null;//返回对创建此窗口的应用
+		window.close();//关闭浏览器窗口
+	}	
+}
+
+
+var num = 0;
+var timer = null;
+
+function change(){
+	if(num % 2 == 0){
+		document.title = '@弹出窗口'+num;
+	}else{
+		document.title = '#弹出窗口'+num;
+	}
+	num++;
+}
+
+function changeTitle(){
+	clearInterval(timer);
+	timer = setInterval('change()',2000)
+/*	timer = setInterval(function(){
+		if(num % 2 == 0){
+			document.title = '@弹出窗口'+num;
+		}else{
+			document.title = '#弹出窗口'+num;
+		}
+		num++;
+		
+	},2000)*/
+	
+	/*if(num % 2 == 0){
+		document.title = '@弹出窗口'+num;
+	}else{
+		document.title = '#弹出窗口'+num;
+	}
+	num++;
+	setTimeout("changeTitle()",2000);*/
+
+}
+window.onload = changeTitle;
+</script>
+</head>
+
+<body>
+<form action=''>
+
+<input type="submit" value="用户注册" onclick = 'openWindow()' />
+<input type='button' value='取消' onclick = 'closeWindow()' />
+
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>正则表达式</title>
+
+<script>
+str = 'hello World';
+patt = new RegExp('Wo','g');
+/*val = patt.exec(str);
+document.write(val+'<br/>',patt.lastIndex+'<br/>');*/
+
+val = patt.test(str);
+document.write(val);
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

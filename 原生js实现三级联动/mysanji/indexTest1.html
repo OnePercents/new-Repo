@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>三级联动</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	
+	body{
+		background:#F3F3F3;
+	}
+	
+	.wrapper{
+		width:300px;
+		margin:100px auto;
+	}
+	
+	.provinceBox,.cityBox,.schoolBox{
+		width:300px;
+		height:30px;
+		background:#fff;
+		border-radius: 4px;
+		margin-bottom:10px;
+	}
+	
+	label{
+		display:inline-block;
+		height:20px;
+		margin:4px 10px auto 10px;
+		padding-right:10px;
+		border-right:1px solid #EFEFEF;
+		font-size:14px;
+		color:#8369EB;
+	}
+	
+	select{
+		width:74%;
+		border-color:#E0E0E0;
+	}
+	
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+	<div class="provinceBox">
+    	<label>省份</label>
+        <select id="province">
+        	<option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+    </div>
+    <div class="cityBox">
+	    <label>城市</label>
+        <select id="city">
+        	<option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+    </div>
+    <div class="schoolBox">
+    	<label>学校</label>
+        <select id="school">
+        	<option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/AllSchool.js"></script>
+
+<script>
+
+	
+	
+	(function(){
+		var provinceNode = $('#province');
+		var cityNode = $('#city');
+		var schoolNode = $('#school');		
+		
+		/*省份*/
+		var strP = '';
+		for(var i = 0,province_len = province.length ; i < province_len ; i++){
+			strP += '<option value = "'+province[i][0]+'">'+province[i][1]+'</option>'
+		}
+		console.log(strP);
+		provinceNode.html(strP);
+		
+		/*城市*/
+		var strC = '';
+		var cityArr = city[provinceNode.val()];
+		console.log(provinceNode.val())
+		for(var i = 0,city_len = cityArr.length ; i < city_len ; i++){
+			strC += "<option value = " + cityArr[i][0] + ">" + cityArr[i][1] + "</option>";
+		}
+		console.log(strC);
+		cityNode.html(strC);
+		
+		/*学校*/
+		var strS = '';
+		var schoolArr = allschool[cityNode.val()];
+		console.log(schoolArr);
+		for( var i = 0,school_len = schoolArr.length; i < school_len ; i++){
+			strS += '<option value = "'+schoolArr[i][0]+'">'+schoolArr[i][2]+'</option>';
+		}
+		console.log(strS);
+		schoolNode.html(strS);
+		
+		provinceNode.change(function(){
+			/*城市*/
+			var strC = '';
+			var cityArr = city[provinceNode.val()];
+			console.log(cityArr);
+			for(var i = 0,city_len = cityArr.length ; i < city_len ; i++){
+				console.log(city_len);
+				strC += "<option value = " + cityArr[i][0] + ">" + cityArr[i][1] + "</option>";
+			}
+			cityNode.html(strC);
+			
+			/*城市*/
+			var strS = '';
+			var schoolArr = allschool[cityNode.val()];
+			for( var i = 0,school_len = schoolArr.length; i < school_len ; i++){
+				strS += '<option value = "'+schoolArr[i][0]+'">'+schoolArr[i][2]+'</option>'
+			}
+			schoolNode.html(strS);
+		})
+		
+		/*城市联动*/
+		cityNode.change(function(){
+			/*城市*/
+			var strS = '';
+			var schoolArr = allschool[cityNode.val()];
+			for( var i = 0,school_len = schoolArr.length; i < school_len ; i++){
+				strS += '<option value = "'+schoolArr[i][0]+'">'+schoolArr[i][2]+'</option>'
+			}
+			schoolNode.html(strS);
+		})
+		
+	})()
+	
+
+</script>
+
+</body>
+</html>

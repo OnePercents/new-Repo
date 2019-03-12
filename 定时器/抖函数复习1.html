@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<style>
+#move{width:50px; height:50px; position:absolute;top:50px;left:50px;background:#09F;}
+</style>
+
+</head>
+
+<body>
+<input type="button" value="向前" />
+<input type="button" value="向后" />
+<div id="move"></div>
+<script src="dou_copy_upper.js"></script>
+<script>
+
+	var oBtn1 = document.getElementsByTagName('input')[0];
+	var oBtn2 = document.getElementsByTagName('input')[1];
+	var oMove = document.getElementById('move');
+	var timer = null;
+	
+	oBtn1.onclick = function(){
+		move(oMove,10,800,'left',function(){
+			move(oMove,10,500,'top');	
+		})	
+	}
+	oBtn2.onclick = function(){
+		move(oMove,10,50,'left',function(){
+			move(oMove,10,50,'top');
+		})	
+	}
+	
+</script>
+
+</body>
+</html>

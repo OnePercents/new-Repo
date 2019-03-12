@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>介绍几种清除浮动的方法</title>
+    <style>
+        #wrap{
+            width: 600px;
+            border: 1px solid red;
+            /* height: 100px; */
+            /* overflow: hidden; */
+            overflow: auto;
+        }
+        .left{
+            width: 100px;
+            height: 100px;
+            background: orange;
+            float: left;
+        }
+
+        .right{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            float:right;
+        }
+
+        /* .clear:after{
+            clear: both;
+            display: block;
+            content:'';
+        }
+
+        .clear{
+            zoom:1;
+        } */
+
+        /* .clear{
+            clear: both;
+        } */
+
+    </style>
+</head>
+<body>
+    <!-- 1.父级:after + zoom -->
+    <!-- 2.子级添加空<div> -->
+        <!-- 3.给父级加height -->
+        <!-- 4.给父级加overflow:hidden -->
+        <!-- 5.给父级加overflow:auto  -->
+
+    <div id="wrap"> <!-- class="clear"-->
+        <div class="left"></div>
+        <div class="right"></div>
+        <!-- <div class="clear"></div> -->
+    </div>
+</body>
+</html>

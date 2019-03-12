@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="init.css">
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a href="#panelTitle1" data-parent='#accordion'>游戏</a>
+                    </h3>
+                </div>
+                <div class="panel-collapse collapse in" id='panelTitle1'>
+                    <div class="panel-body">
+                        <p>1111111111111111111</p>
+                        <p>22222222222222222222222222</p>
+                        <p>33333333333333333333</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a href="#panelTitle2" data-parent='#accordion'>游戏</a>
+                    </h3>
+                </div>
+                <div class="panel-collapse collapse" id='panelTitle2'>
+                    <div class="panel-body">
+                        <p>1111111111111111111</p>
+                        <p>22222222222222222222222222</p>
+                        <p>33333333333333333333</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> 
+                        <!-- data-toggle='collapse' -->
+                        <a href="#panelTitle3" data-parent='#accordion'>游戏</a>
+                    </h3>
+                </div>
+                <div class="panel-collapse collapse" id='panelTitle3'>
+                    <div class="panel-body">
+                        <p>1111111111111111111</p>
+                        <p>22222222222222222222222222</p>
+                        <p>33333333333333333333</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="panel-group" id="accordion2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a href="#1" data-parent='#accordion2' data-toggle='collapse' data>
+                            游戏
+                        </a>
+                    </h3>
+                </div>
+                <div class="panel-collapse collapse" id="1">
+                    <div class="panel-body">
+                        <p>11111111111111111111111111</p>
+                        <p>2222222222222222222222</p>
+                        <p>33333333333333333333333</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a href="#2" data-parent='#accordion2' data-toggle='collapse' data>
+                            游戏
+                        </a>
+                    </h3>
+                </div>
+                <div class="panel-collapse collapse" id="2">
+                    <div class="panel-body">
+                        <p>11111111111111111111111111</p>
+                        <p>2222222222222222222222</p>
+                        <p>33333333333333333333333</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a href="#3" data-parent='#accordion2' data-toggle='collapse' data>
+                            游戏
+                        </a>
+                    </h3>
+                </div>
+                <div class="panel-collapse collapse" id="3">
+                    <div class="panel-body">
+                        <p>11111111111111111111111111</p>
+                        <p>2222222222222222222222</p>
+                        <p>33333333333333333333333</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" language='javascript'>
+    $(function(){
+
+        $('.panel-collapse').collapse({
+
+            parent:".panel",
+            toggle:true
+        })
+
+        $('.panel-title').on('click',function(){
+            $(this).parent().next().collapse('toggle');
+        })
+    }
+</script>
+</html>

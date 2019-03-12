@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>获得当前位置</title> 
+</head>
+<body>
+
+<div id="demo">点击获得当前位置</div>
+
+<button onclick = 'getLocation()'>点击</button>
+
+<script>
+var x = document.getElementById('demo');
+function getLocation(){
+	if(navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(showLocation);
+	}else{
+		x.innerHTML = '浏览器不支持此功能！';
+	}
+}
+
+function showLocation(position){
+	x.innerHTML = '经度:'+position.coords.latitude + '<br/>' + '纬度:' + position.coords.longitude;
+}
+</script>
+
+</body>
+</html>

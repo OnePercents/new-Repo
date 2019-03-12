@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,div,a,img,{
+	margin:0;
+	padding:0;
+	text-decoration:none;	
+}
+
+.wrapper{
+	width:880px;
+	height:270px;
+	margin:0 auto;
+	overflow:hidden;
+	border:1px solid red;
+	position:relative;
+}
+
+.imgs_box{
+	width:2000px;
+	font-size:0;
+}
+
+.imgs_box img{
+	margin:10px;
+}
+
+
+.left{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	border:1px solid red;
+	background:url(imgs/l&r.png);
+}
+
+.right{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	border:1px solid red;
+	background:url(imgs/l&r.png) 0 -30px;
+}

@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+ul,
+li {
+  list-style-type: none;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+#wrapper {
+  height: 100%;
+  background: #eee;
+}
+#header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  height: 4rem;
+}
+.headerTop {
+  height: 2rem;
+}
+img {
+  display: block;
+}
+#logo {
+  width: 3.55555556rem;
+  height: 1.3037037rem;
+  padding: 0.26666667rem 0.25185185rem 0.26666667rem;
+  float: left;
+}
+#logo img {
+  width: 60%;
+}
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.headerNav {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.headerNav a {
+  display: inline-block;
+  width: 1.64444444rem;
+  height: 1.15555556rem;
+  background: #690;
+  color: #ccc;
+  margin-right: 0.2962963rem;
+  margin-top: 0.2962963rem;
+  padding: 0.17777778rem 0.26666667rem;
+  font-size: 0.62222222rem;
+  text-align: center;
+  line-height: 1.15555556rem;
+  border-radius: 0.11851852rem;
+}
+.searchBox input[typt='text']::-webkit-input-placeholder {
+  color: #333;
+}
+.searchBox {
+  height: 1.52592593rem;
+  padding: 0.23703704rem;
+}
+.searchBox [type='text'] {
+  background: #999;
+  box-sizing: border-box;
+  height: 1.52592593rem;
+  width: 12.28148148rem;
+  color: #333;
+  font-size: 0.59259259rem;
+  border: 1px solid #5a5a5a;
+  border-radius: 0.22222222rem;
+  outline: none;
+  text-indent: 0.2962963rem;
+}
+.searchBox [type='text']:focus {
+  background: #fff;
+}
+.searchBox [type='submit'] {
+  float: right;
+  width: 3.00740741rem;
+  height: 1.52592593rem;
+  border: none;
+  background: #414040;
+  color: white;
+  font-size: 0.59259259rem;
+  border-radius: 0.22222222rem;
+  outline: none;
+}
+#mask {
+  width: 100%;
+  position: absolute;
+  top: 2rem;
+  padding: 0.14814815rem;
+  border-top: 0.01481481rem solid #6a6a6a;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 1000;
+}
+#mask li {
+  width: 22.5%;
+  height: 2rem;
+  float: left;
+  line-height: 2rem;
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+}
+#mask li a {
+  color: #fff;
+}
+#content {
+  padding-top: 4rem;
+}
+#content .nav {
+  box-sizing: border-box;
+  height: 2.62222222rem;
+  padding: 0.45925926rem 0 0.20740741rem 0;
+}
+.nav {
+  line-height: 1.91111111rem;
+  overflow: hidden;
+  white-space: nowrap;
+  float: left;
+  font-size: 0;
+}
+.nav li {
+  font-size: 1rem;
+  line-height: 1.91111111rem;
+  display: inline-block;
+  height: 1.91111111rem;
+  padding: 0 0.56296296rem;
+}
+.nav li a {
+  color: #020202;
+}
+.nav .active {
+  background: #690;
+}
+.nav .active a {
+  color: #fff;
+}

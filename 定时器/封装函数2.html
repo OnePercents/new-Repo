@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<style>
+#div{width:100px; height:100px; position:absolute; top:50px; left: 10px; background:red;}
+</style>
+
+</head>
+
+<body>
+<input type = 'button' value="向前" id='btn1'/>
+<input type = 'button' value="向后" id='btn2'/>
+<div id="div"></div>
+<script>
+
+var oBtn1 = document.getElementById('btn1');
+var oDiv = document.getElementById('div');
+
+oBtn1.onclick = function(){
+	move( oDiv,'top',10 ,400,function(){
+		move( oDiv ,'top', 10 ,50);
+	});
+/*	move( oDiv ,'left', 10 ,400);*/
+	
+}
+
+
+function move(obj , attr, plus , target,endF){
+	plus = parseInt(getStyle(obj , attr)) < target ? plus:-plus ;
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function(){
+		var speed = parseInt(getStyle(obj , attr)) + plus ;
+		
+		if(speed > target && plus > 0){
+			speed=target;
+			
+		}
+		if(speed < target && plus < 0){
+			speed = target;
+		}
+		
+		obj.style[attr] = speed + 'px';
+		if(speed ==target){
+			clearInterval(obj.timer);
+			endF && endF();	
+		}
+	},30)
+	
+}
+
+function getStyle(obj , attr){
+	return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+}
+
+</script>
+</body>
+</html>

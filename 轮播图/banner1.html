@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<style>
+
+body,div,ul,li,a{
+	margin:0;
+	padding:0;
+	list-style:none;
+	text-decoration:none;	
+}
+
+.banner_box{
+	width:520px;
+	height:280px;
+	margin: 20px auto 0;	
+	border:10px solid #CCC;
+	position:relative;
+	overflow:hidden;
+}
+
+.banner{
+	position:absolute;
+	left:-520px;
+	width:3640px;
+	font-size:0;
+	display:inline-block;
+}
+
+.banner img{
+	border:0;
+}
+
+.ul{
+	border-radius: 7px;
+	background:rgba(255,255,255,.3);
+	position:absolute;
+	bottom:20px;
+	left:50%;
+	margin-left:-35px;
+	font-size:0;
+}
+
+.ul li{
+	width:8px;
+	height:8px;
+	margin: 3px;
+	border-radius:50%;
+	float:left;
+	display:inline-block;
+	background:#fff;
+}
+
+a{
+	display:none;
+	width:40px;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	font-size:24px;
+	position:absolute;
+	top:50%;
+	margin-top:-20px;
+	color:#fff;
+	background:rgba(0,0,0,.4);
+}
+.banner_box:hover a{
+	display:inline-block;	
+}
+.prev{
+	left:20px;
+	border-bottom-right-radius:50%;
+	border-top-right-radius:50%;
+}
+
+.next{
+	right: 20px;
+	border-bottom-left-radius:50%;
+	border-top-left-radius:50%;
+}
+
+.ul .active{
+	background:orangered;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="banner_box">
+	<div class = 'banner'>
+    	<img src="banner/ban5.jpg" />
+        <img src="banner/ban1.jpg" />
+        <img src="banner/ban2.jpg" />
+        <img src="banner/ban3.jpg" />
+        <img src="banner/ban4.jpg" />
+        <img src="banner/ban5.jpg" />
+        <img src="banner/ban1.jpg" />
+    </div>
+    
+    <ul class="ul">
+    	<li class="active"></li>
+    	<li></li>
+    	<li></li>
+    	<li></li>
+    	<li></li>
+    </ul>
+    
+    <a href="javascript:;" class="prev" style="display:none;"> < </a>
+    <a href="javascript:;" class="next" style="display:none;"> > </a>
+</div>
+<script>
+	var oPrev = document.getElementsByClassName('prev')[0],
+		oNext = document.getElementsByClassName('next')[0],
+		oBanner = document.getElementsByClassName('banner')[0],
+		oUl = document.getElementsByTagName('ul')[0],
+		oLi = document.getElementsByTagName('li'),
+		oBanner_box = document.getElementsByClassName('banner_box')[0];
+	var	timer1,timer2 ;
+	var index = 0,
+		flag = true;
+		
+	function moveImg(dis){
+		flag = false;
+		var duration = 400;
+		var durationEach = 20;
+		var disEach = dis/(duration/durationEach);
+		var goal = oBanner.offsetLeft + dis;
+		
+		function move(){
+			if( dis > 0 && oBanner.offsetLeft < goal || dis < 0 && oBanner.offsetLeft > goal){
+				oBanner.style.left = oBanner.offsetLeft + disEach + 'px';
+			}else{
+				clearInterval(timer1);
+				oBanner.style.left = goal +'px';
+				if(oBanner.offsetLeft == -3120){
+					oBanner.style.left = -520 + 'px';
+				}else if(oBanner.offsetLeft == 0){
+					oBanner.style.left = -2600 + 'px';	
+				}
+				flag = true;
+			}
+		}
+		
+		timer1 = setInterval(move,durationEach)
+	}
+	
+	oPrev.onclick = function(){
+		if(flag == false) return;
+		moveImg(520);
+		if(index==0){
+			index = 4;
+		}else{
+			index--;	
+		}
+		oLiStyle();	
+	}
+	
+	oNext.onclick = function(){
+		if(flag == false) return;
+		moveImg(-520);
+		if(index== 4){
+			index= 0 ;
+		}else{
+			index++;	
+		}
+		oLiStyle();	
+	}
+	
+	function oLiStyle(){
+		oUl.getElementsByClassName('active')[0].className = '';//父级.get..
+		oLi[index].className = 'active';
+	}
+	for( var i = 0 ; i < oLi.length; i++){
+		(function(j){
+			oLi[j].onclick = function(){
+				var offset = (j-index)*-520;
+				moveImg(offset)
+				index = j;
+				oLiStyle();	
+				
+			}	
+		})(i)
+	};
+	
+	timer2 = setInterval(oNext.onclick,2000);
+	
+	oBanner_box.onmouseover = function(){
+		clearInterval(timer2);
+	}
+	oBanner_box.onmouseout = function(){
+		timer2 = setInterval(oNext.onclick,2000);
+	}
+	
+</script>
+</body>
+</html>

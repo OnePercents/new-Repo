@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--1.引入js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<!--2.创建模板-->
+<div id="app">
+    <!--渲染数据-->
+    <!--{{words}}-->
+    <ol>
+    <li v-for="text in todos">
+        {{todos.text.text}}
+    </li>
+    </ol>
+    <a v-bind:href>百度一下</a>
+</div>
+</body>
+<!--3.创建Vue对象-->
+<script>
+    var app = new Vue({
+//        边界管理
+        el:'#app',
+//        设置数据
+        data:{
+            msg:'https//:www.baidu.com',
+            todos:[
+                {text:'one'},
+                {text:'two'},
+                {text:'three'}
+            ]
+        }
+    })
+</script>
+</html>

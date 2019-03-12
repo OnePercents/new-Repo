@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>全选功能</title>
+
+<script>
+
+
+
+function checkAll(){
+	var books = document.getElementsByName('checked');
+	var checkAll = document.getElementsByName('checkAll')[0];
+	for( var i = 0 ; i < books.length; i++){
+		if( checkAll.checked == true ){
+			books[i].checked = true;
+		}else{
+			books[i].checked = false;
+		}
+	}
+}
+
+function checkOne(){
+	var num = 0 ;
+	var books = document.getElementsByName('checked');
+	var checkAll = document.getElementsByName('checkAll')[0];
+	for(var i = 0 ; i < books.length ;i++ ){
+		if(books[i].checked == true){
+			num++;
+		}
+	}
+	if(num == books.length){
+		checkAll.checked = true;
+	}else{
+		checkAll.checked = false;	
+	}	
+}
+
+
+function add(){
+	
+	var oldTr = document.getElementById('tr7');
+	var newTr = document.createElement('tr');
+	var col1 = document.createElement('td');
+	var col2 = document.createElement('td');
+	var col3 = document.createElement('td');
+	var col4 = document.createElement('td');
+	
+	col1.innerHTML = '<input type="checkbox" onclick="checkOne()">';
+	col2.innerHTML = '锋利的jQuery';
+	col3.innerHTML = '￥10';
+	col4.innerHTML = '8';
+	
+	newTr.appendChild(col1);
+	newTr.appendChild(col2);
+	newTr.appendChild(col3);
+	newTr.appendChild(col4);
+	
+	oldTr.parentNode.insertBefore(newTr , oldTr);
+	
+}
+
+function delSec(){
+	document.getElementById('tab').deleteRow(1);
+}
+
+function changeT(){
+	var oTitle = document.getElementById('tr1');
+	oTitle.setAttribute('style','background:#999;color:white;');	
+}
+
+function copyLast(){
+	var newLast = document.getElementById('tr7').cloneNode(true);
+	document.getElementById('tab').appendChild(newLast);
+}
+</script>
+</head>
+
+<body><table width="800" border="1" id="tab">
+  <tr id="tr1">
+    <th scope="col"><input type="checkbox" name ='checkAll' onclick = 'checkAll()'>全选</th>
+    <th scope="col">书名</th>
+    <th scope="col">价格</th>
+    <th scope="col">数量</th>
+  </tr>
+  <tr id="tr2">
+    <td><input type="checkbox" name ='checked' onclick = 'checkOne()' ></td>
+    <td>javaScript入门与提高</td>
+    <td>￥1</td>
+    <td>10</td>
+  </tr>
+  <tr id="tr3">
+    <td><input type="checkbox" name ='checked' onclick = 'checkOne()' ></td>
+    <td>javaScript DOM 编程艺术</td>
+    <td>￥3</td>
+    <td>10</td>
+  </tr>
+  <tr id="tr4">
+    <td><input type="checkbox" name ='checked' onclick = 'checkOne()' ></td>
+    <td>精通javaScript 与 jQuery</td>
+    <td>￥5</td>
+    <td>4</td>
+  </tr>
+  <tr id="tr5">
+    <td><input type="checkbox" name ='checked' onclick = 'checkOne()' ></td>
+    <td>锋利的jQuery</td>
+    <td>￥10</td>
+    <td>8</td>
+  </tr>
+  <tr id="tr6">
+    <td><input type="checkbox" name ='checked' onclick = 'checkOne()' ></td>
+    <td>jQuery 实战</td>
+    <td>￥20</td>
+    <td>4</td>
+  </tr>
+  <tr id="tr7">
+    <td><input type="checkbox" name ='checked' onclick = 'checkOne()' ></td>
+    <td>javaScript权威</td>
+    <td>￥30</td>
+    <td>6</td>
+  </tr>
+</table>
+<input type="button" value="增加一行" onclick = 'add()'>
+<input type="button" value="删除第二行" onclick="delSec()">
+<input type="button" value="修改标题样式" onclick = 'changeT()'>
+<input type="button" value="复制最后一行" onclick = 'copyLast()'>
+</body>
+</html>

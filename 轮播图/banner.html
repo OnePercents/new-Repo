@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<style>
+*{
+	padding: 0;
+	margin: 0;
+}
+#banner {margin:0 auto;width:600px;height:300px; position:relative;}
+img{width:600px;height:300px;border:none;}
+span{position:absolute;top:0;right:0;color:red;}
+p{color:white; text-indent:10px;background:rgba(255,255,255,.3) ; height: 40px;line-height:40px; width: 600px;position:absolute;bottom:15px;}
+ul{height:15px;width:600px;position:absolute;bottom: 0;left:0;}
+ul li{list-style:none;float:left;width:100px;height:15px;}
+.active {background:blue;}
+
+</style>
+
+<script>
+
+window.onload = function(){
+	
+	var oBanner = document.getElementById('banner');
+	var oImg = document.getElementsByTagName('img')[0];
+	var oP = document.getElementsByTagName('p')[0];
+	var oSpan = document.getElementsByTagName('span')[0];
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li');
+	
+	var arrImg = ['banner/1bg.png','banner/2bg.png','banner/3bg.png','banner/4bg.png','banner/5bg.png','banner/6bg.png'];
+	var arrText = ['图片一','图片二','图片三','图片四','图片五','图片六'];
+	
+	oImg.timer = null;
+	var num = 0 ;
+
+	for(var i = 0 ; i < arrImg.length; i++){
+		oUl.innerHTML += '<li></li>'
+	}
+	
+	var tab = function(){
+		
+		oImg.src = arrImg[num];
+		oP.innerHTML = arrText[num];
+		oSpan.innerHTML = num+1 +'/'+ arrImg.length;
+		for( var i = 0 ; i < arrImg.length ; i++){
+			aLi[i].className = '';
+		}
+		aLi[num].className = 'active';
+ 	}
+	
+	tab();
+	
+	function auto(obj){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			tab();
+			num++;
+			num %= arrImg.length;	
+		},3000)
+	}
+	auto(oImg);
+}
+
+</script>
+</head>
+
+<body>
+<div id="banner">
+	
+    <img src='banner/1bg.png'/>
+    <span></span>
+    <p></p>
+    <ul></ul> 
+</div>
+</body>
+</html>

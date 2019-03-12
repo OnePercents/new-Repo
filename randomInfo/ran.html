@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<style>
+	div{
+		width:800px;
+		margin:20px auto;
+		}
+		
+	table{
+		margin-top:10px;
+		border:1px solid black;
+		border-collapse:collapse;
+		width:600px;
+		}
+		
+	tr{
+		width:600px;
+		height:36px;
+		line-height:36px;
+			
+	}
+	
+	th,td{
+		width:200px;
+		height:36px;
+		line-height:36px;
+		text-align:center;
+		border:1px solid black;
+		}
+	
+</style>
+<script>
+	var firstName = ["赵",    "钱",    "孙",    "李",    "周",    "吴",    "郑",    "王",    "冯",    "陈",    
+"褚",    "卫",    "蒋",    "沈",    "韩",    "杨",    "朱",    "秦",    "尤",    "许",
+"何",    "吕",    "施",    "张",    "孔",    "曹",    "严",    "华",    "金",    "魏",    
+"陶",    "姜",    "戚",    "谢",    "邹",    "喻",    "柏",    "水",    "窦",    "章",
+"云",    "苏",    "潘",    "葛",    "奚",    "范",    "彭",    "郎",    "鲁",    "韦",    
+"昌",    "马",    "苗",    "凤",    "花",    "方",    "俞",    "任",    "袁",    "柳",
+"酆",    "鲍",    "史",    "唐",    "费",    "廉",    "岑",    "薛",    "雷",    "贺",    
+"倪",    "汤",    "滕",    "殷",    "罗",    "毕",    "郝",    "邬",    "安",    "常",
+"乐",    "于",    "时",    "傅",    "皮",    "卞",    "齐",    "康",    "伍",    "余",    
+"元",    "卜",    "顾",    "孟",    "平",    "黄",    "和",    "穆",    "萧",    "尹"];
+
+	var lastName = [  "子璇", "淼", "国栋", "夫子", "瑞堂", "甜", "敏", "尚", "国贤", "贺祥", "晨涛", 
+"昊轩", "易轩", "益辰", "益帆", "益冉", "瑾春", "瑾昆", "春齐", "杨", "文昊", 
+"东东", "雄霖", "浩晨", "熙涵", "溶溶", "冰枫", "欣欣", "宜豪", "欣慧", "建政", 
+"美欣", "淑慧", "文轩", "文杰", "欣源", "忠林", "榕润", "欣汝", "慧嘉", "新建", 
+"建林", "亦菲", "林", "冰洁", "佳欣", "涵涵", "禹辰", "淳美", "泽惠", "伟洋", 
+"涵越", "润丽", "翔", "淑华", "晶莹", "凌晶", "苒溪", "雨涵", "嘉怡", "佳毅", 
+"子辰", "佳琪", "紫轩", "瑞辰", "昕蕊", "萌", "明远", "欣宜", "泽远", "欣怡", 
+"佳怡", "佳惠", "晨茜", "晨璐", "运昊", "汝鑫", "淑君", "晶滢", "润莎", "榕汕", 
+"佳钰", "佳玉", "晓庆", "一鸣", "语晨", "添池", "添昊", "雨泽", "雅晗", "雅涵", 
+"清妍", "诗悦", "嘉乐", "晨涵", "天赫", "玥傲", "佳昊", "天昊", "萌萌", "若萌"];
+
+	var tel = [131 , 136 , 138 ,180 , 181 , 182 ,137 ,153 ,155 , 178];
+	
+	function randomInfo( fN , lN ,tel){
+		var fN_len = fN.length;
+		var lN_len = lN.length;
+		var tel_len = tel.length;
+		var name = fN[parseInt(Math.random()*fN_len)]+lN[parseInt(Math.random()*lN_len)];
+		var tel = tel[parseInt(Math.random()*tel_len)]+''+(parseInt(Math.random()*90000000)+10000000);
+		var randomInfoObj = {
+			name:name,
+			tel:tel
+		}
+		return randomInfoObj;
+	}
+
+	function onehunder(){
+
+		var arrInfo = [];
+		for( var i = 0 ; i < 100 ; i++ ){
+			var info = randomInfo( firstName , lastName , tel)
+			info.id = i+1;
+			arrInfo.push(info);
+			console.log(arrInfo[i].name);
+		}
+		return arrInfo;	
+	}
+	
+	function create(){
+
+		var arrInfo = onehunder();
+		var arrInfo_len = arrInfo.length;
+		var table = document.getElementById('table');
+		var newTr;
+		for( var i = 0 ; i < arrInfo_len ; i++ ){
+			
+			var content = [arrInfo[i].id,arrInfo[i].name,arrInfo[i].tel];
+			
+			var con_len = content.length;
+			var newRow = table.insertRow(-1);
+			for( var j = 0 ; j < con_len; j++){
+				var newTd1 = newRow.insertCell(j);
+				newTd1.innerHTML = content[j];
+			}
+		}
+	}
+	
+	function search(obj){
+		setTimeout(function(){//因为是即时查询，需要用setTimeout进行延迟，让值写入到input内，再读取
+			var table = document.getElementById('table');//获取table的id标识
+			var len = table.rows.length;//表格总共有多少行
+			var key = obj.value;//获取输入框的值
+			var searchCol = 1;//要搜索的哪一列，这里是第一列，从0开始数起
+			for(var i=1;i<len;i++){//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+				var searchText = table.rows[i].cells[searchCol].innerHTML;//取得table行，列的值
+				if(searchText.match(key)){//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+					table.rows[i].style.display='';//显示行操作，
+				}else{
+					table.rows[i].style.display='none';//隐藏行操作
+				}
+			}
+  		},200);//200为延时时间
+		
+		
+		
+		/*var val = document.getElementsByTagName('input')[0].value;
+		
+		var arrInfo = onehunder();
+		var table = document.getElementById('table');
+		var len = table.rows.length;
+		
+		
+		
+		for( var i = 1 ; i < len ; i++ ){
+			if( table.rows[i].cells[1].innerText == val ){
+				
+				alert('序号:'+table.rows[i].cells[0].innerText+'\n'+'姓名:'+table.rows[i].cells[1].innerText+'\n'+'姓名:'+table.rows[i].cells[2].innerText);
+			}
+		}*/
+	}
+</script>
+</head>
+
+<body onLoad="create()">
+<div>
+	<input placeholder="请输入姓名进行查询..." onKeyDown="search(this)" autofocus>
+<!--	<button onclick='search()'>查询</button>-->
+    <table id="table">
+    	<tr>
+        	<th>序号</th>
+            <th>姓名</th>
+            <th>电话号码</th>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

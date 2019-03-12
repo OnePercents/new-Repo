@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机生成100份个人信息</title>
+    <style>
+        *{
+            /* 初始化样式 */
+            margin:0;
+            padding:0;
+        }
+
+        #wrapper{
+            width:600px;
+            margin:20px auto;
+        }
+
+        #table{
+            margin-top:20px;
+            width: 600px;
+            border: 1px solid black;
+            /* 合并单元格之间的border */
+            border-collapse: collapse;
+            
+        }
+
+        tr{
+            width: 100%;
+            height:36px;
+        }
+
+        th,td{
+            text-align: center;
+            height:36px;
+            line-height: 36px;
+            border:1px solid black;
+            width: 200px;
+        }
+
+        #input{
+            /* 转换为行内块元素 */
+            display: inline-block;
+            width:300px;
+            height: 36px;
+            text-indent: 2%;
+            outline: none;
+        }
+
+    </style>
+
+    <script>
+        // 2.实现随机生成100份个人信息
+        var firstName=["赵",    "钱",    "孙",    "李",    "周",    "吴",    "郑",    "王",    "冯",    "陈",
+"褚",    "卫",    "蒋",    "沈",    "韩",    "杨",    "朱",    "秦",    "尤",    "许",
+"何",    "吕",    "施",    "张",    "孔",    "曹",    "严",    "华",    "金",    "魏",
+"陶",    "姜",    "戚",    "谢",    "邹",    "喻",    "柏",    "水",    "窦",    "章",
+"云",    "苏",    "潘",    "葛",    "奚",    "范",    "彭",    "郎",    "鲁",    "韦",
+"昌",    "马",    "苗",    "凤",    "花",    "方",    "俞",    "任",    "袁",    "柳",
+"酆",    "鲍",    "史",    "唐",    "费",    "廉",    "岑",    "薛",    "雷",    "贺",
+"倪",    "汤",    "滕",    "殷",    "罗",    "毕",    "郝",    "邬",    "安",    "常",
+"乐",    "于",    "时",    "傅",    "皮",    "卞",    "齐",    "康",    "伍",    "余",
+"元",    "卜",    "顾",    "孟",    "平",    "黄",    "和",    "穆",    "萧",    "尹"];
+        var lastName = ["子璇", "淼", "国栋", "夫子", "瑞堂", "甜", "敏", "尚", "国贤", "贺祥", "晨涛",
+"昊轩", "易轩", "益辰", "益帆", "益冉", "瑾春", "瑾昆", "春齐", "杨", "文昊",
+"东东", "雄霖", "浩晨", "熙涵", "溶溶", "冰枫", "欣欣", "宜豪", "欣慧", "建政",
+"美欣", "淑慧", "文轩", "文杰", "欣源", "忠林", "榕润", "欣汝", "慧嘉", "新建",
+"建林", "亦菲", "林", "冰洁", "佳欣", "涵涵", "禹辰", "淳美", "泽惠", "伟洋",
+"涵越", "润丽", "翔", "淑华", "晶莹", "凌晶", "苒溪", "雨涵", "嘉怡", "佳毅",
+"子辰", "佳琪", "紫轩", "瑞辰", "昕蕊", "萌", "明远", "欣宜", "泽远", "欣怡",
+"佳怡", "佳惠", "晨茜", "晨璐", "运昊", "汝鑫", "淑君", "晶滢", "润莎", "榕汕",
+"佳钰", "佳玉", "晓庆", "一鸣", "语晨", "添池", "添昊", "雨泽", "雅晗", "雅涵",
+"清妍", "诗悦", "嘉乐", "晨涵", "天赫", "玥傲", "佳昊", "天昊", "萌萌", "若萌"];
+
+        var tel=[131,136,153,181,183,152,173,166,144,133,132]
+        
+        function create(){//生成个人信息函数
+            var onehundredObj = onehundred();
+            var len = onehundredObj.length;
+            var table = document.getElementById('table');
+            var newTr ;
+            for(var i = 0 ; i < len ; i ++){
+                var content = [onehundredObj[i].id,onehundredObj[i].name,onehundredObj[i].tel]
+                var content_len = content.length;
+                var newRow = table.insertRow(-1);//将新行插到最后一行
+                for(var j = 0 ; j < content_len ; j++){
+                    var newTd = newRow.insertCell(j);
+                    newTd.innerHTML = content[j];
+                }
+            }
+        }
+
+        function onePeople( firstName , lastName ,tel ){//生成一份个人信息
+            var fN_len = firstName.length;
+            var lN_len = lastName.length;
+            var tel_len = tel.length;
+            var name = firstName[parseInt(Math.random()*(fN_len-1))]+lastName[parseInt(Math.random()*(lN_len-1))];
+            var tel = tel[parseInt(Math.random()*(tel_len-1))]+''+parseInt(Math.random()*90000000+10000000);
+            var people = {
+                name:name,
+                tel:tel
+            }
+            return people;
+        }
+
+        function onehundred(){//自动生成100份个人信息
+        
+            var peopleArr = [];
+            for(var i = 0 ; i < 100 ; i++ ){
+                var onepeople = onePeople(firstName,lastName,tel)
+                onepeople.id = i+1;
+                peopleArr.push(onepeople);
+            }
+            return peopleArr;
+        }
+
+        // 3.搜索函数
+        function search(obj){//用setTimeout设置延迟
+            setTimeout(function(){
+                var table = document.getElementById('table');
+                var rows_len = table.rows.length;
+                var key = obj.value;//获取input的值
+                var searchCol = 1;//设置搜索的列
+                for(var i = 1 ; i < rows_len ; i ++){//从第二行开始
+                    var searchText = table.rows[i].cells[searchCol].innerHTML;
+                    if( searchText.match(key)){//使用match函数筛选
+                        table.rows[i].style.display = '';
+                    }else{
+                        table.rows[i].style.display = 'none';
+                    }
+                }
+            },200)
+        }
+
+    </script>
+</head>
+<!-- 加载时运行函数 -->
+<body onload="create()">
+    <!-- 1.实现静态布局 -->
+    <div id="wrapper">
+
+        <!-- placeholder实现了显示提示文字的功能 ， autofocus 实现了自动获取焦点的功能 -->
+        <input type="text" placeholder="请输入姓名查询..." id="input" autofocus="autofocus" onkeydown="search(this)">
+        <table id='table'>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>手机号码</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,191 @@
+@rem:67.5rem;
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+ul,li{
+    list-style-type: none;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+#wrapper {
+    height: 100%;
+    background: #eee;
+}
+
+#header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background:black;
+    height: 270/@rem;
+}
+
+.headerTop{
+    height: 135/@rem;
+}
+
+img{
+    display: block; 
+}
+
+#logo{
+    width:240/@rem;
+    height: 88/@rem;
+    padding:18/@rem 17/@rem 18/@rem;
+    float:left;
+     
+}
+
+#logo img{
+    width: 60%;
+}
+
+// #menuBtn{
+//     float:left;
+//     width: 129/@rem;
+//     height: 135/@rem;
+//     background:red url();
+//     background-size: 82/@rem 233/@rem;
+// }
+
+
+// placeholder样式
+
+a{
+
+    //阻止a高亮
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0)
+}
+
+.headerNav{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.headerNav a{
+    display: inline-block;
+    width: 111/@rem;
+    height: 78/@rem;
+    background:#690;
+    color:#ccc;
+    margin-right:20/@rem;
+    margin-top:20/@rem;
+    padding: 12/@rem 18/@rem;
+    font-size: 42/@rem;
+    text-align: center;
+    line-height: 78/@rem;
+    border-radius: 8/@rem;
+}
+
+//搜索框样式
+.searchBox input[typt='text']::-webkit-input-placeholder{
+    color:#333;
+}
+
+.searchBox{
+    height: 103/@rem;
+    padding: 16/@rem;
+}
+
+.searchBox [type='text']{
+    background:#999;
+    box-sizing: border-box;
+    height: 103/@rem;
+    width:829/@rem;
+    color: #333;
+    font-size:40/@rem;
+    border:1px solid #5a5a5a;
+    border-radius: 15/@rem;
+    outline: none;
+    text-indent: 20/@rem;
+}
+
+.searchBox [type='text']:focus{
+    background:#fff;
+}
+
+.searchBox [type='submit']{
+    float: right;
+    width:203/@rem;
+    height: 103/@rem;
+    border: none;
+    background:#414040;
+    color:white;
+    font-size: 40/@rem;
+    border-radius: 15/@rem;
+    outline: none;
+}
+
+#mask{
+    width: 100%;
+    position: absolute;
+    top: 135/@rem;
+    padding:10/@rem;
+    border-top: 1/@rem solid #6a6a6a;
+    background:rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 1000;
+}
+
+#mask li{
+    width: 22.5%;
+    height: 135/@rem;
+    float:left;
+    line-height: 135/@rem;
+    font-size: 54/@rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+#mask li a{
+    color:#fff;
+}
+
+#content{
+    padding-top: 270/@rem;
+}
+
+#content .nav{
+    box-sizing: border-box;
+    height: 177/@rem;
+    padding:31/@rem 0 14/@rem 0;
+}
+.nav{
+    line-height: 129/@rem;
+    overflow: hidden;
+    white-space: nowrap;
+    float: left;
+    font-size: 0;
+}
+.nav li{
+    font-size: 1rem;
+    line-height: 129/@rem;
+    display: inline-block;
+    height: 129/@rem;
+    padding:0 38/@rem;
+}
+
+.nav li a{
+    color: #020202;
+}
+
+.nav .active{
+    background: #690;
+}
+
+.nav .active a{
+    color: #fff;
+}
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="init.css">
+
+</head>
+
+<body>
+    <div class="container" style="margin-top:100px;">
+        <a href="#" class="btn btn-info btn-lg" title="弹出标题框" data-content="这里是弹出框正文" data-placement='left'>
+            点击弹出框
+        </a>
+
+        <!-- <a href="#" class="btn btn-info btn-lg" title="弹出标题框" data-content="这里是弹出框正文" data-placement='bottom'>
+            点击弹出框
+        </a>
+
+        <a href="#" class="btn btn-info btn-lg" title="弹出标题框" data-content="这里是弹出框正文" data-placement='top'>
+            点击弹出框
+        </a>
+
+        <a href="#" class="btn btn-info btn-lg" title="弹出标题框" data-content="这里是弹出框正文" data-placement='right'>
+            点击弹出框
+        </a> -->
+    </div>
+
+
+    <br>
+    <br>
+
+    <div class="wrap">
+        <button class="btn btn-primary" data-toggle='button' type="button">激活按钮</button>
+
+    </div>
+
+    <br><br>
+
+    <div class="wrap">
+        <div class=" alert alert-info">
+            <button class="close close1" type="button">&times;</button>
+
+            <strong>警告框标题</strong> 说明文字
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" language='javascript'>
+    $(function () {
+        $('a').popover({
+            html: true,
+            // title: '模拟工具提示功能',
+            // content: 'content',
+            placement: 'bottom',
+            trigger: 'hover',
+            // delay: { show: 1000, hide: 500 }
+        }).on('show.bs.popover',function(){
+            $(this).removeClass('btn-info').addClass('btn-primary')
+            .next('.popover').css('background-color','red')
+            alert(1)
+        }).on('shown.bs.popover',function(){
+            $(this).removeClass('btn-primary').addClass('btn-success')
+            .next('.popover').css('background-color','blue')
+            alert(2)
+        }).on('hide.bs.popover',function(){
+            $(this).removeClass('btn-success').addClass('btn-warning')
+            .next('.popover').css('background-color','red')
+            alert(3)
+        }).on('hidden.bs.popover',function(){
+            $(this).removeClass('btn-warning').addClass('btn-info')
+            alert(4)
+        });
+
+        // $('.wrap button').on('click',function(){
+        //     $(this).button();
+        // })
+        // $('.wrap button').on('click',function(){
+        //     $(this).button('toggle');
+        // })
+
+        $('.close1').on('click',function(){
+            $(this).alert('close')
+        })
+    })
+</script>
+
+</html>

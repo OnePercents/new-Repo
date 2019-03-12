@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<!--1.创建组件-->
+    <template id="account">
+        <h3>组件</h3>
+        用户名：{{name1}}<br>
+        密码：
+    </template>
+<div id="app">
+    <account1 :name1="name"></account1>
+    {{name}}
+    <input type="button" @click="reverse" value="翻转">
+    <!--子组件-->
+</div>
+<script>
+//    2.定义组件
+    Vue.component('account1',{
+        template:'#account',
+        //接收数据
+        props:{
+            name1:String
+        }
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            name:'hello'
+//            父组件
+        },
+        methods:{
+            reverse:function(){
+                this.name = this.name.split('').reverse().join('');
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重</title>
+    <script>
+
+        var arr = [1,1,1,2,22,2,1,2,3,4,2,3,2,1,4,2,0];
+
+        function select(a){
+            var job = {};
+            var len = a.length;
+            var newArr = [];
+            for(var i = 0 ; i < len ; i++){
+                if(!job[a[i]]){
+                    job[a[i]] = 1;
+                    newArr.push(a[i]);
+                }
+            }
+            return newArr;
+
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

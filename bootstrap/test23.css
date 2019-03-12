@@ -1,0 +1,50 @@
+.lastPic{
+    width:70%;
+    border:none;
+}
+
+.jumbotron{
+    background:url("./example/003.jpg");
+    background-size:100% 100%;
+    position: relative;
+    height: auto;
+    height: 443px;
+    /* color:#fff; */
+}
+
+.jumbotron .p-left{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 90%;
+}
+
+.jumbotron .p-right{
+    position: absolute;
+    bottom: 5px;
+    right: -20px;
+    width: 10%
+}
+
+.item>div{
+    
+    background:#f1f1f1;
+    height: 200px;
+    padding-top: 20px;
+}
+
+.item>div div{
+    
+    width: 80%;
+    margin-left: 10%;
+}
+
+.item div p{
+    font-size: 14px;
+}
+
+.item img{
+    margin-left: 10%;
+    width: 80%;
+    display:inline-block;  
+}

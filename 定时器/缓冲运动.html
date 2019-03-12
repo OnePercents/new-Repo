@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>缓冲运动</title>
+<style>
+#div{width:100px;height:100px;position:absolute; top:50px; left:0;background:red;}
+</style>
+<script>
+window.onload = function(){
+	var oBtn = document.getElementById('btn');
+	var oDiv = document.getElementById('div');
+	oDiv.timer = null;
+	oBtn.onclick = function(){
+		move(oDiv,'left',600);
+	}
+	function move(obj,attr,target){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			var speed = (target - obj.offsetLeft)/10;
+			if(obj.offsetLeft >= target ){
+				obj.offsetLeft = target;
+			}
+			if( obj.offsetLeft == target){
+				clearInterval(obj.timer);
+			}
+			obj.style[attr] = obj.offsetLeft + speed + 'px';
+		},30)
+	}
+}
+</script>
+</head>
+
+<body>
+<input type="button" id="btn" value="点我移动" />
+<div id="div"></div>
+</body>
+</html>

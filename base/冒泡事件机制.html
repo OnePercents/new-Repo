@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>冒泡事件机制</title>
+<style>
+#div1{width:100px;height:200px; position:absolute;left:-100px;top:300px;background:#333;}
+#div2{width:30px;height:60px;position:absolute;left:100px;top:70px;background:#999;}
+</style>
+<script src="../定时器/定时.js"></script>
+<script>
+window.onload = function(){
+	var oDiv = document.getElementById('div1');
+	oDiv.onmouseover = function(){
+		move(oDiv,'left',2,0) ;	
+	}
+	oDiv.onmouseout = function(){
+		move(oDiv,'left',2,-100);	
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<div id = 'div2'>分享到</div>
+</div>
+</body>
+</html>

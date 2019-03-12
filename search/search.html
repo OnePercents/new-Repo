@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+    <style>
+        body,table,div{
+            padding:0;
+            margin:0;
+        }
+        .checkBox{
+            margin:20px auto 0;
+            width:800px;
+        }
+
+        table{
+            width: 600px;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+
+        tr{
+            height: 36px;
+            line-height:36px;
+            width:600px;
+        }
+
+        td,th{
+            height: 36px;
+            line-height:36px;
+            text-align:center;
+            width:200px;
+        }
+    </style>
+    <script>
+
+        var firstName = ["赵",    "钱",    "孙",    "李",    "周",    "吴",    "郑",    "王",    "冯",    "陈","褚",    "卫",    "蒋",    "沈",    "韩",    "杨",    "朱",    "秦",    "尤",    "许",
+ "何",    "吕",    "施",    "张",    "孔",    "曹",    "严",    "华",    "金",    "魏","陶",    "姜",    "戚",    "谢",    "邹",    "喻",    "柏",    "水",    "窦",    "章",
+"云",    "苏",    "潘",    "葛",    "奚",    "范",    "彭",    "郎",    "鲁",    "韦", "昌",    "马",    "苗",    "凤",    "花",    "方",    "俞",    "任",    "袁",    "柳",
+  "酆",    "鲍",    "史",    "唐",    "费",    "廉",    "岑",    "薛",    "雷",    "贺", "倪",    "汤",    "滕",    "殷",    "罗",    "毕",    "郝",    "邬",    "安",    "常",
+ "乐",    "于",    "时",    "傅",    "皮",    "卞",    "齐",    "康",    "伍",    "余", "元",    "卜",    "顾",    "孟",    "平",    "黄",    "和",    "穆",    "萧",    "尹"];
+        var lastName = ["子璇", "淼", "国栋", "夫子", "瑞堂", "甜", "敏", "尚", "国贤", "贺祥", "晨涛","昊轩", "易轩", "益辰", "益帆", "益冉", "瑾春", "瑾昆", "春齐", "杨", "文昊",
+"东东", "雄霖", "浩晨", "熙涵", "溶溶", "冰枫", "欣欣", "宜豪", "欣慧", "建政","美欣", "淑慧", "文轩", "文杰", "欣源", "忠林", "榕润", "欣汝", "慧嘉", "新建",
+"建林", "亦菲", "林", "冰洁", "佳欣", "涵涵", "禹辰", "淳美", "泽惠", "伟洋","涵越", "润丽", "翔", "淑华", "晶莹", "凌晶", "苒溪", "雨涵", "嘉怡", "佳毅",
+"子辰", "佳琪", "紫轩", "瑞辰", "昕蕊", "萌", "明远", "欣宜", "泽远", "欣怡","佳怡", "佳惠", "晨茜", "晨璐", "运昊", "汝鑫", "淑君", "晶滢", "润莎", "榕汕",
+"佳钰", "佳玉", "晓庆", "一鸣", "语晨", "添池", "添昊", "雨泽", "雅晗", "雅涵","清妍", "诗悦", "嘉乐", "晨涵", "天赫", "玥傲", "佳昊", "天昊", "萌萌", "若萌"]
+
+        var tel = [131,136,138,139,153,180,181];
+
+        function randomInfo( firstN , lastN , t){
+            var firstLen = firstN.length;
+            var lastLen = lastN.length;
+            var telLen = t.length;
+            var random = Math.random();
+            var name = firstN[parseInt(random*firstLen)]+lastN[parseInt(random*lastLen)];
+            var telPhone = t[parseInt(random*telLen)]+''+(parseInt(random*90000000)+10000000);
+            var infoObj = {
+                name:name,
+                telPhone:telPhone
+            }
+            return infoObj;
+        }
+
+        function info(){
+            var arr = [];
+            var infoObj ;
+            for(var i = 0 ; i < 100; i++){
+                infoObj = randomInfo(firstName,lastName,tel)
+                infoObj.id = i+1;
+                arr.push(infoObj);
+            }
+            return arr;
+        }
+
+        var flag = false;
+
+        function create_info(){
+            if(flag) return;
+            flag = true;
+            var create = info();
+            var len = create.length;
+            var table = document.getElementById('table');
+            var tableLen = table.rows.length
+            var newTr;
+            for (var i = 0 ; i < len ; i++ ){
+
+//                var newTr = document.createElement('tr');
+                var newTd1,newTd2,newTd3;
+                var content = [create[i].id,create[i].name,create[i].telPhone];
+
+                newTr = table.insertRow(-1);
+
+                newTd1 = newTr.insertCell(0);
+                newTd1.innerHTML = content[0];
+
+                newTd2 = newTr.insertCell(1);
+                newTd2.innerHTML = content[1];
+
+                newTd3 = newTr.insertCell(2);
+                newTd3.innerHTML = content[2];
+            }
+        }
+
+        function search(){
+            var value = document.getElementsByName('name')[0].value;
+            var table = document.getElementById('table');
+            var len = table.rows.length;
+            for( var i = 1 ; i < len ; i++){
+                if( table.rows[i].cells[1].innerText == value ){
+                    alert('序号:'+table.rows[i].cells[0].innerText+'\n'+'姓名:'+table.rows[i].cells[1].innerText+'\n'+'电话:'+table.rows[i].cells[2].innerText);
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div class="checkBox">
+    <button onclick="create_info()">一键生成100份个人信息</button>
+    <input placeholder="请输入要查询的名字" name = 'name'/>
+    <button onclick="search()">查询</button>
+    <table border="1px solid black" id="table">
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>手机号码</th>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

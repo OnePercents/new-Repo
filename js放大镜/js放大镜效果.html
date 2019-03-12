@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js放大镜</title>
+    <style>
+		*{margin:0 ;padding:0;}
+        #box{position:relative;width:384px;height:240px;left:10px;top:10px;}
+        #box .small_pic{width:384px;height:240px;}
+        #box .slider{display:none; position:absolute;top:0;left:0; background:rgba(0,0,0,.3);width:192px;height:120px;z-index:1000;}
+
+        #big_pic{width:384px;height:240px;overflow:hidden;position:absolute;left:414px;top:10px;}
+        #big_pic .big_pic{width:768px;height:480px;display:none;position:absolute;left:404px;top:0;}
+    </style>
+    <script>
+        window.onload = function(){
+            var oBox = document.getElementById('box');
+			
+			var smallPic = document.getElementsByClassName('small_pic')[0];
+            var oSlider = document.getElementsByClassName('slider')[0];
+            var bigPic = document.getElementsByClassName('big_pic')[0];
+			oBox.onmouseover = function(){
+				bigPic.style.display = 'block';
+                oSlider.style.display = 'block';
+			}
+			
+            oBox.onmousemove = function(event){
+				var left = event.clientX - oSlider.offsetWidth/2;
+                var top = event.clientY - oSlider.offsetHeight/2;
+				if(left<0){
+					left = 0;
+				}else if(left>(smallPic.offsetWidth-oSlider.offsetWidth)){
+					left=smallPic.offsetWidth-oSlider.offsetWidth;
+				}
+				if(top<0){
+					top = 0 ;
+				}else if(top>(smallPic.offsetHeight-oSlider.offsetHeight)){
+					top = smallPic.offsetHeight-oSlider.offsetHeight;
+				}
+                oSlider.style.left = left + 'px';
+                oSlider.style.top = top + 'px';
+				
+				var bs = parseFloat(bigPic.offsetWidth/smallPic.offsetWidth);
+				
+				bigPic.style.left = -(oSlider.offsetLeft*bs)+'px';
+				bigPic.style.top = -(oSlider.offsetTop*bs)+'px';
+				
+				
+
+			}
+            oBox.onmouseout = function(){
+                bigPic.style.display = 'none';
+                oSlider.style.display = 'none';
+            };
+			
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+    	<!--滑块-->
+        <div class="slider"></div>
+        <!--小图-->
+        <img src="img/pic1.jpg" class="small_pic"/>
+        
+    </div>
+    <div id="big_pic">
+        <!--大图-->
+        <img src="img/pic1.jpg" class="big_pic" />
+    </div>
+</body>
+</html>

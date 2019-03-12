@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<canvas id="myCanvas" style="background:#000;" width="1000" height="600"></canvas>
+
+<script>
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+
+var starList = [];
+
+function init(){
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+};
+
+init();
+
+window.onresize = init;
+
+canvas.addEventListener('mousemove',function(event){
+	var e = event;
+	starList.push(new Star(e.offsetX,e.offsetY));
+});
+
+
+
+function Star(x,y){
+	this.x = x;
+	this.y = y;
+	
+	this.vx = (Math.random()-0.5)*10;
+	this.vy = (Math.random()-0.5)*20;
+	
+	this.a = 1;
+	this.va = 0.99;
+	
+	this.color = randomColor();
+	this.draw();
+}
+
+function randomColor(){
+	var r = Math.floor(Math.random()*256);
+	var g = Math.floor(Math.random()*256);
+	var b = Math.floor(Math.random()*256);
+	return 'rgba('+r+','+g+','+b+')';
+}
+
+Star.prototype = {
+	
+	draw:function(){
+		ctx.beginPath();
+		ctx.fillStyle = this.color;
+		ctx.globalAlpha = this.a;
+		ctx.globalCompositeOperation = 'lighter';
+		ctx.arc(this.x,this.y,Math.random()*4,0,2*Math.PI,false);
+		ctx.fill();
+		this.update();
+	},
+	update:function(){
+		/*this.x += this.vx;*/
+		this.y += this.vy;
+		this.a *= this.va;
+	}
+}
+
+function render(){
+	starList.forEach(function(item,i){
+		item.draw();
+		if(item.a<0.1){
+			starList.splice(i,1);
+		}
+	});
+	window.requestAnimationFrame(render);
+};
+
+render();
+
+</script>
+
+</body>
+</html>

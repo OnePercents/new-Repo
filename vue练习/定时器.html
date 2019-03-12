@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+    <style>
+        #div{background:red;width:100px;height:100px;position:absolute;top:50px;left:10px;}
+    </style>
+
+</head>
+<body>
+<input id="btn" type = 'button' value="点我"/>
+<div id="div"></div>
+<script>
+
+    var oBtn = document.getElementById('btn');
+    var oDiv = document.getElementById('div');
+    var timer = null;
+
+    oBtn.onclick=function(){
+        clearInterval(oDiv.timer);
+        timer = setInterval(function(){
+            var a = parseInt(getStyle(oDiv , 'left'))+ 24;
+            oDiv.style.left = a +'px';
+            if(a>=800){
+                a=800;
+            }
+            if(a==800){
+                clearInterval(oDiv.timer);
+                alert(a);
+            }
+
+
+        },30)
+        oDiv.style.left = parseInt(getStyle(oDiv , 'left')) + 10 + 'px';
+    }
+
+    function getStyle(obj , attr){
+        return obj.currentStyle? obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+    }
+
+</script>
+</body>
+</html>

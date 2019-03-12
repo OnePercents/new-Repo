@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<style>
+#time{font-size:300px;}
+</style>
+
+<script>
+/*function showTime(){
+	var myDate = new Date();
+	var hours = myDate.getHours();
+	var minutes = myDate.getMinutes();
+	var seconds = myDate.getSeconds();
+	if( hours < 10){
+		hours = '0'+hours;
+	}
+	if( minutes < 10){
+		minutes = '0'+minutes;
+	}
+	if( seconds < 10){
+		seconds = '0'+seconds;
+	}
+	var timeNow = document.getElementById('time');
+	timeNow.innerHTML = hours + ":" +minutes + ':' +seconds ;
+	setTimeout('showTime()',1000);
+}
+	
+window.onload = showTime;*/
+window.onload = function(){
+	setInterval(function(){
+	  	var myDate = new Date();
+		var hours = myDate.getHours();
+		var minutes = myDate.getMinutes();
+		var seconds = myDate.getSeconds();
+		if( hours < 10){
+			hours = '0'+hours;
+		}
+		if( minutes < 10){
+			minutes = '0'+minutes;
+		}
+		if( seconds < 10){
+			seconds = '0'+seconds;
+		}
+		var timeNow = document.getElementById('time');
+		timeNow.innerHTML = hours + ":" +minutes + ':' +seconds ;
+
+	},1000)
+}		
+</script>
+</head>
+
+<body>
+<div id="time"></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<script>
+window.onload = function(){
+	var oText = document.getElementsByTagName("input")[0];
+	var change = function(obj,val){
+		obj.onfocus = function(){
+			if(this.value == val){
+				this.value = "";
+			}	
+		}
+		obj.onblur = function(){
+			if(this.value == ""){
+				this.value = val;
+			}	
+		}
+	}
+	change(oText , '请输入搜索内容...');	
+	var oBtn = document.getElementsByTagName('input')[1];
+	oBtn.onclick = function(){
+		oText.select();	
+	}
+}
+
+</script>
+</head>
+
+<body>
+
+<input type="text" value="请输入搜索内容..." />
+<input type= 'button' value="选择" />
+
+</body>
+</html>

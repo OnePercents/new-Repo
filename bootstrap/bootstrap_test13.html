@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="init.css">
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="input-group">
+            <span class="input-group-addon">email</span>
+            <input type="text" class="form-control" placeholder="sxxxx@xx.com">
+
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    .00
+                </button>
+            </span>
+        </div>
+
+
+        <br>
+        <br>
+
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">Email</span>
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">@163.com</button>
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" tabindex='-1'>
+
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;">@126.com</a></li>
+                    <li><a href='javascript:;'>@qq.com</a></li>
+                    <li><a href="javascript:;">@263.com</a></li>
+                </ul>
+                <button class="btn btn-default" type="button">登录</button>
+
+            </span>
+
+
+        </div>
+        <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
+
+
+        <!-- data-toggle='modal' -->
+        <button data-target="#myModal" class="btn btn-default">
+            打开模态框
+        </button>
+
+        <div class="modal hide fade" id="myModal">
+            myModal模态框
+        </div>
+
+
+        <br>
+        <br>
+
+        <a href="#myModal1" class="btn btn-default" data-toggle="modal">弹出modal</a>
+
+        <div id="myModal1" class="modal fade">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                            <h3>模态框标题</h3>
+                            
+                    </div>
+                    <div class="modal-body">
+                            <p>模态框body</p>
+                            
+                    </div>
+                    <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss='modal'>模态框footer</button>
+                            
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <br>
+        <br>
+
+        <button class="btn btn-default" data-target="#myModal2" data-toggle="modal">弹出模态框</button>
+
+
+        <div class="modal fade" id="myModal2" tabindex='-1' role="dialog" 
+        aria-labelledby="myModalLabel" aria-hidden='true' >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">&times;</button>
+                        <h3>标题</h3>
+
+                    </div>
+                    <div class="modal-body">
+                        <p>这是正文</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <button class="btn btn-default btn2" data-target="#myModal2" data-toggle="modal"
+        data-backdrop="false" data-keyboard='false'
+        >弹出模态框</button>
+
+
+        <div class="modal fade" id="myModal2" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden='true' >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">&times;</button>
+                        <h3>标题</h3>
+
+                    </div>
+                    <div class="modal-body">
+                        <p>这是正文</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+
+
+</body>
+<script type='text/javascript'>
+    $(function () {
+        $('.btn2').on('click', function () {
+            $('#modal').modal('toggle')
+
+            //$(this).modal({
+            //    backdrop:false,
+            //    keyboard:false
+            //}); 
+
+
+        // })
+
+
+        $('#myModal').on('show.bs.modal',function(){
+            alert('调用模态框')
+        }).on('shown.bs.modal',function(){
+            alert('调用模态框完成')
+        }).on('hide.bs.modal',function(){
+            alert('关闭模态框')
+        }).on('hidden.bs.modal',function(){
+            alert('关闭模态框完成')
+        })
+    })
+</script>
+
+</html>

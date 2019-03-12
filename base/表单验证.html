@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{color:#000;}
+
+span{color:#999;}
+</style>
+<script src='RegExp.js'>
+/*
+function $(ele_id){
+	return document.getElementById(ele_id);
+}
+
+//验证用户名
+
+function checkUn(){
+	var text1 = $('user_name').value;
+	var text2 = $('use_name');
+	text2.innerHTML = '';
+	if( text1 == ''){
+		text2.innerHTML = '请输入4-16位用户名,用户名中不能包含数字';
+	}else{
+		if( text1.length < 4 || text1.length > 16 ){
+		text2.innerHTML = '请输入4-16位用户名';
+		return false;
+	}
+	for(var i = 0 ; i < text1.length ; i++){
+		if( !isNaN(text1.charAt(i))){
+			text2.innerHTML = '用户名中不能包含数字';
+			return false;
+		}
+	}
+	return true;
+	}
+	
+}
+
+//验证密码
+
+function checkPw(){
+	var t1 = $('password').value;
+	var t2 = $('pw');
+	t2.innerHTML = '' ;
+	if( t1.length<4 || t1.length>10){
+		t2.innerHTML = '密码长度在4-10之间';
+		return false;
+	}
+	return true;
+}
+
+//再次验证输入密码
+
+function checkRepw(){
+	//两次密码不一致，请重新输入
+	var Ret1 = $('rePassword').value;
+	var Ret2 = $('rePw');
+	Ret2.innerHTML = '';
+	if( ($('password').value) != Ret1){
+		Ret2.innerHTML = '两次密码不一致，请重新输入';
+		return false ;
+	}
+	return true;
+}
+
+//验证邮箱
+
+function checkEm(){
+	var em1 = $('email').value;
+	var em2	= $('ema');
+	em2.innerHTML = '';
+	var index = em1.indexOf('@',1);
+	var index2 = em1.indexOf('.',1);
+	if(index2 - index <= 1 ){
+		em2.innerHTML = '@在前,.在后';
+	}
+	if(index == -1 ){
+		em2.innerHTML = '输入的邮箱应包含@符号';
+		return false;
+	}
+	
+	if(em1.split('@').length != 2){
+		em2.innerHTML = '只能有一个@和.';
+		return false;
+	}
+	if(em1.split('.').length != 2){
+		em2.innerHTML = '只能有一个@和.';
+		return false;
+	}
+	
+	return true;
+}
+
+//验证手机号
+
+function checkPhone(){
+	var phone = $('phone').value;
+	var phoneSpan = $('pho');
+	var num = 0;
+	phoneSpan.innerHTML = '';
+	if( phone.length == 11 && phone.charAt(0)== 1 ){
+		for( var i = 0 ; i < phone.length ; i++){
+			if( isNaN(phone.charAt(i))){
+				phoneSpan.innerHTML= '手机号码不能存在非法字符';
+				return false;
+			}
+			num++;
+		}
+		if( num == 11){
+			phoneSpan.innerHTML = '';
+		}
+		
+	}else{
+		phoneSpan.innerHTML= '请输入11位手机号码！！号码第一个数位1';
+	}
+	
+}
+
+//验证生日
+
+function checkBirth(){
+	var birthday = $('birthday').value;
+	var birth = $('birth');
+	birth.innerHTML = '';
+	
+	var arr =  birthday.split('-');
+	var days;
+	var year = arr[0];
+	var month = arr[1];
+	var day = arr[2];
+	if(!isNaN(year) && !isNaN(month) && !isNaN(day)){
+		
+		if(year <1900 || year >2100 || month <=0 || month>12 ){
+			birth.innerHTML = '日期输入有误！！！';
+			return false;
+		}
+		
+		if(month == 2){
+			if( year % 4 == 0 && year% 100 != 0 || year % 400 == 0 ){
+				days = 29;
+			}else{
+				days = 28;
+			}
+		}
+		else if( month == 4 || month == 6 ||month == 9 || month == 11 ){
+			days =30;
+		}
+		else{
+			days =31;
+		}			
+		
+		if(day < 0 || day >days){
+			birth.innerHTML = '日期输入有误！！！';
+			return false;
+		}
+		
+		birth.innerHTML = '';
+	}else{
+		birth.innerHTML = '日期输入有误！！！日期除分隔符外，应全部为数字';
+	}
+}*/
+
+</script>
+
+</head>
+
+<body>
+
+<div>
+	<form>
+    	用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input type='text' id= 'user_name' onblur='checkUn()'/><span id="use_name">用户名由4-16位字符组成，不能包含数字</span><br/>
+        密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type='password' id= 'password' onblur='checkPw()' /><span id="pw" >密码由4-10位字符组成</span><br/>
+        确认密码：<input type='password' id= 'rePassword' onBlur="checkRepw()" /><span id="rePw"></span><br/>
+        电子邮箱：<input type='text' id= 'email' onblur='checkEm()'/><span id="ema">邮箱格式：web@126.com</span><br/>
+        手机号码：<input type='text' id= 'phone' onblur = 'checkPhone()'/><span id="pho">手机格式1xx xxx xxxxx</span><br/>
+        出生日期：<input type='text' id= 'birthday' onBlur="checkBirth()" /><span id="birth">请按xxxx-xx-xx输入出生日期</span><br/>
+        <input type="submit" value="注册" id = 'sumbit' />
+    </form>
+</div>
+
+</body>
+</html>
